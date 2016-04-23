@@ -243,8 +243,7 @@ values."
    ;; Recent files count.
    dotspacemacs-startup-recent-list-size 10
    ;; Default theme.
-   ;; dotspacemacs-default-theme 'whiteboard
-   dotspacemacs-themes '(whiteboard, spacemacs-dark)
+   ;;dotspacemacs-themes '(wombat, whiteboard, spacemacs-dark)
    ))
 
 (defun dotspacemacs/user-init ()
