@@ -235,6 +235,16 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+
+
+
+
+
+   ;; Recent files count.
+   dotspacemacs-startup-recent-list-size 10
+   ;; Default theme.
+   ;; dotspacemacs-default-theme 'whiteboard
+   dotspacemacs-themes '(whiteboard, spacemacs-dark)
    ))
 
 (defun dotspacemacs/user-init ()
