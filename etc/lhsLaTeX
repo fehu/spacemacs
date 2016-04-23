@@ -1,0 +1,26 @@
+#!/bin/bash
+
+ROOT="$1"
+FILE="$2"
+FILE_NAME="${FILE%.*}"
+FILE_DIR="`pwd`"
+
+cd $ROOT
+
+if [ ! -d tex-build ]; then mkdir tex-build; fi
+
+cd tex-build
+
+TEX_FILE="$FILE_NAME.tex"
+DVI_FILE="$FILE_NAME.dvi"
+
+lhs2TeX -o "$TEX_FILE" "$FILE_DIR/$FILE" > /dev/null
+
+latex -interaction=nonstopmode "$TEX_FILE"
+
+
+DVI_TARGET="$FILE_DIR/$FILE.dvi"
+cp "$DVI_FILE" "$DVI_TARGET"
+
+# if [ ! -f "$DVI_TARGET" ]; then ln -s "$DVI_FILE" "$DVI_TARGET"; fi
+

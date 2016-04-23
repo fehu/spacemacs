@@ -37,7 +37,7 @@
 (add-to-list 'auto-mode-alist '("\\.lhs\\'" . latex-mode))
 
 
-
+(load "~/.emacs.d/latex-lhs.el")
 
 
 
