@@ -16,6 +16,8 @@ PDF_FILE="$FILE_NAME.pdf"
 
 lhs2TeX -o "$TEX_FILE" "$FILE_DIR/$FILE" > /dev/null
 
+cp "$FILE_DIR"/*.tex .
+
 latex -interaction=nonstopmode "$TEX_FILE"
 pdflatex -synctex=1 -interaction=nonstopmode "$TEX_FILE"
 
