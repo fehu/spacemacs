@@ -4,7 +4,7 @@
 
 (setq-default spell-together nil)
 (setq-default spell-together-min 2)
-(setq-default spell-together-lim 6)
+(setq-default spell-together-lim 4)
 
 
 
