@@ -2,6 +2,9 @@
 
 ROOT="$1"
 FILE="$2"
+COPY=$3
+FLAGS=$4
+
 FILE_NAME="${FILE%.*}"
 FILE_DIR="`pwd`"
 
@@ -14,9 +17,15 @@ cd tex-build
 TEX_FILE="$FILE_NAME.tex"
 PDF_FILE="$FILE_NAME.pdf"
 
-lhs2TeX -o "$TEX_FILE" "$FILE_DIR/$FILE" > /dev/null
-
 cp "$FILE_DIR"/*.tex .
+
+if [ "$COPY" = "t" ]
+then cp "$FILE_DIR"/*.lhs .
+     SRC="$FILE"
+else SRC="$FILE_DIR/$FILE"
+fi
+
+lhs2TeX $FLAGS -o "$TEX_FILE" "$SRC" > /dev/null
 
 latex -interaction=nonstopmode "$TEX_FILE"
 pdflatex -synctex=1 -interaction=nonstopmode "$TEX_FILE"
