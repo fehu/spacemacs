@@ -13,9 +13,9 @@ Configured for Haskell Literate Programming (with LaTeX).
   in order to avoid collisions with _LaTeX-mode_.
 * Uses ASpell for spelling (EN/ES)
 
-  <kbd><f8></kbd> -- switch language
+  <kbd>f8</kbd> -- switch language
   
-  <kbd>S-<f8></kbd> -- toggle words splitting (shift key)
+  <kbd>S-f8</kbd> -- toggle words splitting (shift key)
 
 
 ### Installation
