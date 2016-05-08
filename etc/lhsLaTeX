@@ -17,13 +17,19 @@ cd tex-build
 TEX_FILE="$FILE_NAME.tex"
 PDF_FILE="$FILE_NAME.pdf"
 
-cp "$FILE_DIR"/*.tex .
+
+for f in $(find "$FILE_DIR" -iname '*.tex' -or -iname '*.fmt');
+do cp $f .; done
+
 
 if [ "$COPY" = "t" ]
 then cp "$FILE_DIR"/*.lhs .
      SRC="$FILE"
 else SRC="$FILE_DIR/$FILE"
 fi
+
+
+
 
 lhs2TeX $FLAGS -o "$TEX_FILE" "$SRC" > /dev/null
 
@@ -32,5 +38,4 @@ pdflatex -synctex=1 -interaction=nonstopmode "$TEX_FILE"
 
 PDF_TARGET="$FILE_DIR/$FILE.pdf"
 cp "$PDF_FILE" "$PDF_TARGET"
-
 
