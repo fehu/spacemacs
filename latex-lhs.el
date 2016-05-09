@@ -5,10 +5,10 @@
 (make-local-variable 'lhs-copy-literate-src-flag)
 (setq-default lhs-copy-literate-src-flag nil)
 
-((make-local-variable 'lhs-showframe-flag)
- (setq-default lhs-showframe-flag nil)
+(make-local-variable 'lhs-showframe-flag)
+(setq-default lhs-showframe-flag nil)
 
-defun lhsLaTeX (name command file)
+(defun lhsLaTeX (name command file)
   (interactive)
   (message (concat "name=" name "; cmd=" command "; file=" file))
 
