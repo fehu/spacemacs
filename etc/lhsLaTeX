@@ -19,11 +19,12 @@ PDF_FILE="$FILE_NAME.pdf"
 
 
 for f in $(find "$FILE_DIR" -iname '*.tex' -or -iname '*.fmt');
-do cp $f .; done
+do cp "$f" .; done
 
 
 if [ "$COPY" = "t" ]
-then cp "$FILE_DIR"/*.lhs .
+then for f in $(find "$FILE_DIR" -iname '*.lhs');
+     do  cp "$f" .; done
      SRC="$FILE"
 else SRC="$FILE_DIR/$FILE"
 fi
