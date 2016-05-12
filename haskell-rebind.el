@@ -3,6 +3,7 @@
   "Keys rebinding for Haskell-mode for usage with LaTeX major-mode."
   (interactive)
 
+
   ;; prefixes
   (spacemacs/declare-prefix "H" "Haskell")
 
@@ -33,9 +34,9 @@
     "Hhd"  'inferior-haskell-find-haddock
     "Hhh"  'hoogle
     "HhH"  'haskell-hoogle-lookup-from-local
-;;    "Hhi"  (lookup-key haskell-mode-map (kbd "C-c TAB"))
-;;    "Hht"  (lookup-key haskell-mode-map (kbd "C-c C-t"))
-;;    "HhT"  'spacemacs/haskell-process-do-type-on-prev-line
+    "Hhi"  (lookup-key haskell-mode-map (kbd "C-c TAB"))
+    "Hht"  (lookup-key haskell-mode-map (kbd "C-c C-t"))
+    "HhT"  'spacemacs/haskell-process-do-type-on-prev-line
     "Hhy"  'hayoo
 
     "Hdd"  'haskell-debug
