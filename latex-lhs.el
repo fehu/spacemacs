@@ -8,6 +8,10 @@
 (make-local-variable 'lhs-showframe-flag)
 (setq-default lhs-showframe-flag nil)
 
+(make-local-variable 'lhs-exec-before)
+(setq-default lhs-exec-before nil)
+
+
 (defun lhsLaTeX (name command file)
   (interactive)
   (message (concat "name=" name "; cmd=" command "; file=" file))
@@ -31,10 +35,20 @@
                         " " copy-lhs-arg
                         " \"" (s-join " " flags) "\""
                         ))
-
            )
+
+      (when lhs-exec-before
+        (mapc (lambda (f) (interactive)
+                (message "%s" f)
+                (shell-command (concat
+                                (file-name-as-directory proj-root)
+                                f " " proj-root " " file
+                                )))
+              lhs-exec-before))
+
       (message (concat "CMD: " cmd))
-      (TeX-run-TeX name cmd file))
+      (TeX-run-TeX name cmd file)
+      )
     )
   )
 
