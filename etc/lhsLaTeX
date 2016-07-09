@@ -12,24 +12,31 @@ cd $ROOT
 
 if [ ! -d tex-build ]; then mkdir tex-build; fi
 
-cd tex-build
 
 TEX_FILE="$FILE_NAME.tex"
 PDF_FILE="$FILE_NAME.pdf"
 
 
-for f in $(find "$FILE_DIR" -iname '*.tex' -or -iname '*.fmt');
-do cp "$f" .; done
+function copyAll {
+    for f in $(eval "find . $1")
+    do  echo "Copying $f"
+        cp --parents "$f" "$ROOT/tex-build"; done
+}
+
+cd "$FILE_DIR"
+
+copyAll "-iname '*.tex' -or -iname '*.fmt'"
 
 
 if [ "$COPY" = "t" ]
-then for f in $(find "$FILE_DIR" -iname '*.lhs');
-     do  cp "$f" .; done
+then echo "Copying *.lhs files from $FILE_DIR"
+     copyAll "-iname '*.lhs'"
      SRC="$FILE"
 else SRC="$FILE_DIR/$FILE"
 fi
 
 
+cd "$ROOT/tex-build"
 
 
 lhs2TeX $FLAGS -o "$TEX_FILE" "$SRC" > /dev/null
