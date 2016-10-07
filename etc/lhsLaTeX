@@ -6,34 +6,48 @@ COPY=$3
 FLAGS=$4
 
 FILE_NAME="${FILE%.*}"
-FILE_DIR="`pwd`"
+FILE_DIR=`pwd`
+
+# echo "ROOT=$ROOT"
+# echo "FILE=$FILE"
+# echo "COPY=$COPY"
+# echo "FILE_NAME=$FILE_NAME"
+# echo "FILE_DIR=$FILE_DIR"
+
 
 cd $ROOT
 
-if [ ! -d tex-build ]; then mkdir tex-build; fi
+if [ -d tex-build ]; then rm -rf tex-build; fi
+mkdir tex-build
 
 
 TEX_FILE="$FILE_NAME.tex"
 PDF_FILE="$FILE_NAME.pdf"
 
 
+# echo "TEX_FILE=$TEX_FILE"
+# echo "PDF_FILE=$PDF_FILE"
+
 function copyAll {
-    for f in $(eval "find . $1")
+    for f in $(eval "find $1")
     do  echo "Copying $f"
         cp --parents "$f" "$ROOT/tex-build"; done
 }
 
-cd "$FILE_DIR"
+cd src
 
 copyAll "-iname '*.tex' -or -iname '*.fmt'"
+
+# cd "$FILE_DIR"
 
 
 if [ "$COPY" = "t" ]
 then echo "Copying *.lhs files from $FILE_DIR"
      copyAll "-iname '*.lhs'"
-     SRC="$FILE"
-else SRC="$FILE_DIR/$FILE"
+     # SRC="$FILE"
 fi
+
+SRC="$FILE_DIR/$FILE"
 
 
 cd "$ROOT/tex-build"

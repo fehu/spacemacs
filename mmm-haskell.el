@@ -8,7 +8,7 @@
  `(
    (haskell-code
     :match-name       haskell-code
-    :submode          haskell-mode
+    :submode          literate-haskell-mode
     :front            "\\\\begin[ \t]*{code}"
     :back             "\\\\end[ \t]*{code}"
     :face             mmm-code-submode-face
@@ -18,7 +18,7 @@
 
    (haskell-spec
     :match-name       haskell-spec
-    :submode          haskell-mode
+    :submode          literate-haskell-mode
     :front            "\\\\begin[ \t]*{spec}"
     :back             "\\\\end[ \t]*{spec}"
     :face             mmm-code-submode-face
@@ -28,7 +28,7 @@
 
    (haskell-bird
     :match-name       haskell-bird
-    :submode          haskell-mode
+    :submode          literate-haskell-mode
     :front            "^>"
     :back             "\n"
     :face             mmm-code-submode-face
